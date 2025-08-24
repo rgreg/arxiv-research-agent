@@ -57,7 +57,8 @@ class RAGService:
 
     async def answer(self, question: str, k: int = 5) -> Dict:
         # 1) Embed question
-        q_vec = self.embedder.embed_texts_sync([question])[0]
+        # q_vec = self.embedder.embed_texts_sync([question])[0]
+        q_vec = self.embedder.embed_queries([question])[0]
         # 2) Search BQ
         hits = self.searcher.search(q_vec, k=k)  # returns [{id,title,chunk_text,dot}, ...]
         # 3) Build prompt for Gemini
