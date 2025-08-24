@@ -1,15 +1,13 @@
+# src/agent_api/core/config.py
 import os
-from pydantic import BaseModel
+from pydantic import BaseSettings, Field
 
-class Settings(BaseModel):
-    gcp_project: str = os.getenv("GCP_PROJECT", "")
-    gcp_region: str = os.getenv("GCP_REGION", "us-central1")
-    vertex_location: str = os.getenv("VERTEX_LOCATION", "us-central1")
-    gcs_bucket: str = os.getenv("GCS_BUCKET", "")
-    gemini_model: str = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
-    embed_model: str = os.getenv("EMBED_MODEL", "text-embedding-004")
-    store_uri: str = os.getenv("STORE_URI", "")
-    index_endpoint_name: str = os.getenv("INDEX_ENDPOINT_NAME", "")
-    deployed_index_id: str = os.getenv("DEPLOYED_INDEX_ID", "")
+class Settings(BaseSettings):
+    project: str = Field(default_factory=lambda: os.environ.get("GCP_PROJECT", "skillful-flow-470023-c0"))
+    location: str = Field(default_factory=lambda: os.environ.get("GCP_REGION", "us-central1"))
+    bq_table: str = Field(default_factory=lambda: os.environ.get("BQ_TABLE", "skillful-flow-470023-c.arxiv_demo.chunks"))  
+    gemini_model: str = Field(default_factory=lambda: os.environ.get("GEMINI_MODEL", "gemini-1.5-flash"))
+    max_context_chunks: int = int(os.environ.get("MAX_CONTEXT_CHUNKS", "5"))
+    max_chunk_chars: int = int(os.environ.get("MAX_CHUNK_CHARS", "1200"))
 
 settings = Settings()

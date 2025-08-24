@@ -1,10 +1,12 @@
-from pydantic import BaseModel, Field
-from typing import List
+# src/agent_api/models/chat.py
+from pydantic import BaseModel
+from typing import List, Any, Optional
 
 class ChatRequest(BaseModel):
-question: str = Field(..., min_length=3)
-top_k: int = 5
+    question: str
+    k: Optional[int] = 5
 
 class ChatResponse(BaseModel):
-answer: str = "Not implemented"
-citations: List[str] = []
+    answer: str
+    citations: List[str]
+    matches: List[Any]

@@ -12,3 +12,14 @@ google-cloud-logging>=3.10
 google-cloud-secret-manager>=2.20
 google-cloud-aiplatform>=1.66
 pytest>=8.2
+google-cloud-aiplatform>=1.66.0
+sentence-transformers>=3.0
+google-cloud-aiplatform>=1.66.0
+fastapi
+uvicorn[standard]
+pydantic
+google-cloud-bigquery
+google-cloud-aiplatform
+gcsfs
+tqdm
+tenacity
