@@ -1,0 +1,8 @@
+name: CD
+on:
+push: { branches: ["main"] }
+jobs:
+noop:
+runs-on: ubuntu-latest
+steps:
+- run: echo "Fill in deploy steps later (Cloud Build + Cloud Run)."
