@@ -1,0 +1,10 @@
+.venv
+.git
+__pycache__/
+.ipynb_checkpoints/
+notebooks/
+*.log
+.env
+*.parquet
+*.jsonl
+data/
